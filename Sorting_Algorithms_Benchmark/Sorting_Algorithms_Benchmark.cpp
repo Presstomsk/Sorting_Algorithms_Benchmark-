@@ -40,7 +40,7 @@ double quickSortR(double *arr, const int n)
     int buffer, p;
     p = arr[n/2];		
 
-    // процедура разделения
+  
     do {
         while (arr[i] < p) i++;
         while (arr[j] > p) j--;
@@ -51,7 +51,7 @@ double quickSortR(double *arr, const int n)
         }
     } while (i <= j);
 
-    // рекурсивные вызовы, если есть, что сортировать 
+   
     if (j > 0) quickSortR(arr, j+1);
     if (n > i) quickSortR(&arr[i], n - i);
     clock_t end = clock();
@@ -70,7 +70,7 @@ double BubbleSortR(double arr[], const double n)
         {
             if (arr[j] < arr[j + 1])
             {
-                // Обмен местами
+                
                 double buffer = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = buffer;
