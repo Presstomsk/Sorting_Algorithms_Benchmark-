@@ -22,34 +22,10 @@ int main()
     int n = 100; //n-количество элементов в массиве
     int m = 20000;// диапазон значений элементов массива 0-m
     Sorting_Algorithms_Benchmark(n, m);
-    n = 200; 
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 400;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 600;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 800;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 1000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 5000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 10000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 15000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 20000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 25000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 30000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 50000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 100000;
-    Sorting_Algorithms_Benchmark(n, m);
-    n = 200000;
-    Sorting_Algorithms_Benchmark(n, m);
+    for (int n = 200; n <= 1000 ;n+=200) Sorting_Algorithms_Benchmark(n, m);
+    for (int n = 5000; n <= 30000; n += 5000) Sorting_Algorithms_Benchmark(n, m);
+    for (int n = 50000; n <= 200000; n *= 2) Sorting_Algorithms_Benchmark(n, m);
+       
 }
 
 
