@@ -1,25 +1,25 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <time.h> 
 
 using namespace std;
 
-void FillRand(int arr[],const int n, int m);// заполнение массива
-void Print(int arr[], const int n); // печать массива
-void Copy(int arr_1[], int arr_2[],const int n); //создание буфферной копии массива
+void FillRand(int arr[],const int n, int m);// Р·Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР°
+void Print(int arr[], const int n); // РїРµС‡Р°С‚СЊ РјР°СЃСЃРёРІР°
+void Copy(int arr_1[], int arr_2[],const int n); //СЃРѕР·РґР°РЅРёРµ Р±СѓС„С„РµСЂРЅРѕР№ РєРѕРїРёРё РјР°СЃСЃРёРІР°
 
-double quickSortR(int *arr, const int n); // Быстрая сортировка
-double ShellSort(int arr[],const int n); // Сортировка Шелла
-double BubbleSortR(int arr[],const int n); // Пузырьковая сортировка
+double quickSortR(int *arr, const int n); // Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
+double ShellSort(int arr[],const int n); // РЎРѕСЂС‚РёСЂРѕРІРєР° РЁРµР»Р»Р°
+double BubbleSortR(int arr[],const int n); // РџСѓР·С‹СЂСЊРєРѕРІР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 
-void Sorting_Algorithms_Benchmark(int n, int m); // Сравнение времени сортировок
+void Sorting_Algorithms_Benchmark(int n, int m); // РЎСЂР°РІРЅРµРЅРёРµ РІСЂРµРјРµРЅРё СЃРѕСЂС‚РёСЂРѕРІРѕРє
 
 
 
 int main()
 {
     setlocale(LC_ALL,"");
-    int n = 10; //n-количество элементов в массиве
-    int m = 100;// диапазон значений элементов массива 0-m
+    int n = 10; //n-РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ
+    int m = 100;// РґРёР°РїР°Р·РѕРЅ Р·РЅР°С‡РµРЅРёР№ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° 0-m
     Sorting_Algorithms_Benchmark(n, m);
 }
 
