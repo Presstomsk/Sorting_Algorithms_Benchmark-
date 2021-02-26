@@ -20,7 +20,7 @@ int main()
 {
     setlocale(LC_ALL,"");
     int n = 100; //n-количество элементов в массиве
-    int m = 30000;// диапазон значений элементов массива 0-m
+    int m = 20000;// диапазон значений элементов массива 0-m
     Sorting_Algorithms_Benchmark(n, m);
     n = 200; 
     Sorting_Algorithms_Benchmark(n, m);
