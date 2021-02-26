@@ -7,9 +7,10 @@ void FillRand(int arr[],const int n, int m);// заполнение массив
 void Print(int arr[], const int n); // печать массива
 void Copy(int arr_1[], int arr_2[],const int n); //создание буфферной копии массива
 
-double quickSortR(int *arr, const int n); // Быстрая сортировка
+double quickSortR(int arr[], const int n); // Быстрая сортировка
 double ShellSort(int arr[],const int n); // Сортировка Шелла
 double BubbleSortR(int arr[],const int n); // Пузырьковая сортировка
+double CountingSortR(int arr[], int arr_index[], const int n,const int m);//Сортировка подсчетом
 
 void Sorting_Algorithms_Benchmark(int n, int m); // Сравнение времени сортировок
 
@@ -52,7 +53,7 @@ int main()
 }
 
 
-double quickSortR(int *arr, const int n)
+double quickSortR(int arr[], const int n)
 {
     clock_t start = clock();
     int i = 0, j = n - 1; 		
@@ -125,6 +126,31 @@ double BubbleSortR(int arr[], const int n)
     return seconds;
 }
 
+double CountingSortR(int arr[], int arr_index[], const int n,const int m)
+{
+    clock_t start = clock();
+    
+    for (int i = 0; i < m; i++) arr_index[i] = 0;
+    
+    for (int i = 0; i < n; i++) arr_index[arr[i]] = arr_index[arr[i]] + 1;
+    
+    int i = 0;
+    for (int j = 0; j < m; j++)
+    {
+        while (arr_index[j] != 0)
+        {
+            arr[i] = j; 
+            arr_index[j]= arr_index[j]-1;
+            i++;
+        }
+    }
+    
+    
+    clock_t end = clock();
+    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+    return seconds;
+}
+
 void FillRand(int arr[], const int n, int m)
 {
     for (int i = 0; i < n; i++)
@@ -154,6 +180,7 @@ void Sorting_Algorithms_Benchmark(int n, int m)
 {
     int* arr = new int[n];
     int* arr_buffer = new int[n];
+    int* arr_index = new int[m];
     FillRand(arr, n, m);
     Copy(arr_buffer, arr, n);
     //Print(arr,n);
@@ -166,11 +193,16 @@ void Sorting_Algorithms_Benchmark(int n, int m)
     Copy(arr, arr_buffer, n);
     //Print(arr, n);
     cout << "Пузырьковая сортировка: " << BubbleSortR(arr, n) << " сек. " << endl;
-   // Print(arr, n);
+    //Print(arr, n);
     Copy(arr, arr_buffer, n);
     //Print(arr, n);
     cout << "Сортировка Шелла: " << ShellSort(arr, n) << " сек. " << endl;
     //Print(arr, n);
+    Copy(arr, arr_buffer, n);
+    //Print(arr, n);
+    cout << "Сортировка подсчетом: " << CountingSortR(arr, arr_index, n, m) << " сек. " << endl;
+    //Print(arr, n);
     delete[] arr;
     delete[] arr_buffer;
+    delete[] arr_index;
 }
