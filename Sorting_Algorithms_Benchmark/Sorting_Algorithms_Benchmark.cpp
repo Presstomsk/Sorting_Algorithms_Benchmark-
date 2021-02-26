@@ -3,37 +3,28 @@
 
 using namespace std;
 
-void FillRand(double arr[],const double n);
-void Print(double arr[], const double n);
-void Copy(double arr_1[], double arr_2[],const double n);
+void FillRand(int arr[],const int n, int m);// заполнение массива
+void Print(int arr[], const int n); // печать массива
+void Copy(int arr_1[], int arr_2[],const int n); //создание буфферной копии массива
 
-double quickSortR(double *arr, const int n);
-double BubbleSortR(double arr[],const double n);
+double quickSortR(int *arr, const int n); // Быстрая сортировка
+double ShellSort(int arr[],const int n); // Сортировка Шелла
+double BubbleSortR(int arr[],const int n); // Пузырьковая сортировка
+
+void Sorting_Algorithms_Benchmark(int n, int m); // Сравнение времени сортировок
+
 
 
 int main()
 {
     setlocale(LC_ALL,"");
-    double n = 100000;
-    double* arr = new double[n];
-    double* arr_buffer = new double[n];
-    FillRand(arr,n);
-    Copy(arr_buffer, arr, n);
-    //Print(arr,n);
-    //Print(arr_buffer,n);
-    cout << endl;
-    cout<<quickSortR(arr, n)<<endl;
-    //Print(arr, n);
-    Copy(arr, arr_buffer, n);
-    //Print(arr, n);
-    //Print(arr, n);
-    cout << BubbleSortR(arr, n) << endl;
-    delete[] arr;
-    delete[] arr_buffer;
+    int n = 10; //n-количество элементов в массиве
+    int m = 100;// диапазон значений элементов массива 0-m
+    Sorting_Algorithms_Benchmark(n, m);
 }
 
 
-double quickSortR(double *arr, const int n)
+double quickSortR(int *arr, const int n)
 {
     clock_t start = clock();
     int i = 0, j = n - 1; 		
@@ -60,7 +51,31 @@ double quickSortR(double *arr, const int n)
     
 }
 
-double BubbleSortR(double arr[], const double n)
+double ShellSort(int arr[], const int n)
+{
+    clock_t start = clock();
+    int itr = n;
+    itr = itr / 2;
+    while (itr > 0)
+    {
+        for (int i = 0; i < n - itr; i++)
+        {
+            for (int j = i; (j >= 0) && (arr[j] > arr[j + itr]); j--)
+            {
+                int buffer = arr[j];
+                arr[j] = arr[j + itr];
+                arr[j + itr] = buffer;
+            }
+        }
+        itr = itr / 2;
+    }
+
+    clock_t end = clock();
+    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+    return seconds;
+}
+
+double BubbleSortR(int arr[], const int n)
 {
     clock_t start = clock();
     
@@ -68,10 +83,10 @@ double BubbleSortR(double arr[], const double n)
     {
         for (int j = 0; j < n - i; j++)
         {
-            if (arr[j] < arr[j + 1])
+            if (arr[j] > arr[j + 1])
             {
                 
-                double buffer = arr[j];
+                int buffer = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = buffer;
             }
@@ -82,15 +97,15 @@ double BubbleSortR(double arr[], const double n)
     return seconds;
 }
 
-void FillRand(double arr[], const double n)
+void FillRand(int arr[], const int n, int m)
 {
     for (int i = 0; i < n; i++)
     {
-        arr[i] = rand() % 30000;
+        arr[i] = rand() % m;
     }
 }
 
-void Print(double arr[], const double n)
+void Print(int arr[], const int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -99,10 +114,33 @@ void Print(double arr[], const double n)
     cout << endl;
 }
 
-void Copy(double arr_1[], double arr_2[], const double n)
+void Copy(int arr_1[], int arr_2[], const int n)
 {
     for (int i = 0; i < n; i++)
     {
         arr_1[i] = arr_2[i];
     }
+}
+
+void Sorting_Algorithms_Benchmark(int n, int m)
+{
+    int* arr = new int[n];
+    int* arr_buffer = new int[n];
+    FillRand(arr, n, m);
+    Copy(arr_buffer, arr, n);
+    //Print(arr,n);
+    //Print(arr_buffer,n);
+    cout << endl;
+    cout << quickSortR(arr, n) << endl;
+    //Print(arr, n);
+    Copy(arr, arr_buffer, n);
+    //Print(arr, n);
+    cout << BubbleSortR(arr, n) << endl;
+   // Print(arr, n);
+    Copy(arr, arr_buffer, n);
+    //Print(arr, n);
+    cout << ShellSort(arr, n) << endl;
+    //Print(arr, n);
+    delete[] arr;
+    delete[] arr_buffer;
 }
