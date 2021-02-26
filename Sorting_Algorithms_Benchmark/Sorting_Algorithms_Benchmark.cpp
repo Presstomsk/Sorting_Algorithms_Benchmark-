@@ -18,8 +18,36 @@ void Sorting_Algorithms_Benchmark(int n, int m); // Сравнение врем�
 int main()
 {
     setlocale(LC_ALL,"");
-    int n = 10; //n-количество элементов в массиве
-    int m = 100;// диапазон значений элементов массива 0-m
+    int n = 100; //n-количество элементов в массиве
+    int m = 30000;// диапазон значений элементов массива 0-m
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 200; 
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 400;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 600;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 800;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 1000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 5000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 10000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 15000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 20000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 25000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 30000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 50000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 100000;
+    Sorting_Algorithms_Benchmark(n, m);
+    n = 200000;
     Sorting_Algorithms_Benchmark(n, m);
 }
 
@@ -131,15 +159,17 @@ void Sorting_Algorithms_Benchmark(int n, int m)
     //Print(arr,n);
     //Print(arr_buffer,n);
     cout << endl;
-    cout << quickSortR(arr, n) << endl;
+    cout << "Сравнение скоростей выполнения сортировок массива, состоящего из " << n << " элементов, " << endl;
+    cout << "где каждый элемент задается случайным образом в диапазоне от 0 до " << m << endl;
+    cout << "Быстрая сортировка: "<<quickSortR(arr, n) <<" сек. "<< endl;
     //Print(arr, n);
     Copy(arr, arr_buffer, n);
     //Print(arr, n);
-    cout << BubbleSortR(arr, n) << endl;
+    cout << "Пузырьковая сортировка: " << BubbleSortR(arr, n) << " сек. " << endl;
    // Print(arr, n);
     Copy(arr, arr_buffer, n);
     //Print(arr, n);
-    cout << ShellSort(arr, n) << endl;
+    cout << "Сортировка Шелла: " << ShellSort(arr, n) << " сек. " << endl;
     //Print(arr, n);
     delete[] arr;
     delete[] arr_buffer;
